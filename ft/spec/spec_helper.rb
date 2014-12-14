@@ -2,6 +2,10 @@ require 'rspec'
 require 'capybara'
 require 'capybara/rspec'
 require 'capybara/poltergeist'
+require 'site_prism'
+require 'require_all'
+
+require_all 'lib/pages'
 
 Capybara.register_driver :poltergeist do |app|
   options = {
@@ -19,7 +23,7 @@ end
 
 Capybara.run_server = false
 Capybara.default_wait_time = 20
-Capybara.app_host = 'https://jinshuju.net/login'
+Capybara.app_host = 'https://jinshuju.net'
 
 # Capybara.current_driver = :selenium
 Capybara.current_driver = :poltergeist

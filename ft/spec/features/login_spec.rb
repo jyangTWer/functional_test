@@ -1,22 +1,10 @@
-require 'spec_helper'
-
 feature 'Signing in' do
+  let(:loginpage) { LoginPage.new }
+  before(:each) { loginpage.load }
+
   scenario 'Signing in with correct credentials' do
-    visit '/'
-
-    within 'form[action*="callback"]' do
-      within 'div.field:nth-child(2)' do
-        find('input#auth_key').set '**************************'
-      end
-
-      within 'div.field:nth-child(3)' do
-        find('input#password').click
-        find('input#password').set '**************************'
-      end
-
-      find('input[name="commit"]').click
-    end
-
-    expect(page).to have_link '杨静TW'
+    homepage = HomePage.new
+    loginpage.default_login.login('************','************')
+    expect(homepage.name_vip.text).to have_text('************')
   end
 end
