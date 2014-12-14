@@ -7,7 +7,7 @@ Capybara.register_driver :poltergeist do |app|
   options = {
       :js_errors => false,
       :timeout => 30,
-      :phantomjs_options => %w['--load-images=no', '--disk-cache=false', '--ignore-ssl-errors=true'],
+      :phantomjs_options => ['--load-images=no', '--disk-cache=false', '--ignore-ssl-errors=true'],
       :window_size => [1920, 1280],
   }
   Capybara::Poltergeist::Driver.new(app, options)
@@ -21,8 +21,5 @@ Capybara.run_server = false
 Capybara.default_wait_time = 20
 Capybara.app_host = 'https://jinshuju.net/login'
 
-if ENV('environment') == 'qa'
-  Capybara.current_driver = :selenium
-else
-  Capybara.current_driver = :poltergeist
-end
+# Capybara.current_driver = :selenium
+Capybara.current_driver = :poltergeist
