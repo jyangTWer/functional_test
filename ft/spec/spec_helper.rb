@@ -4,8 +4,10 @@ require 'capybara/rspec'
 require 'capybara/poltergeist'
 require 'site_prism'
 require 'require_all'
+require 'turnip'
 
 require_all 'lib/pages'
+require_all 'spec/steps'
 
 Capybara.register_driver :poltergeist do |app|
   options = {
