@@ -27,5 +27,9 @@ Capybara.run_server = false
 Capybara.default_wait_time = 20
 Capybara.app_host = 'https://jinshuju.net'
 
-# Capybara.current_driver = :selenium
-Capybara.current_driver = :poltergeist
+Capybara.current_driver = :selenium
+# Capybara.current_driver = :poltergeist
+
+RSpec.configure do |config|
+  config.include LoginSteps
+end
